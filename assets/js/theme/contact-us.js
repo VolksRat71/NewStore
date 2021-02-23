@@ -1,7 +1,6 @@
 import PageManager from './page-manager';
 import nod from './common/nod';
 import forms from './common/models/forms';
-import { announceInputErrorMessage } from './common/utils/form-utils';
 
 export default class ContactUs extends PageManager {
     onReady() {
@@ -12,7 +11,6 @@ export default class ContactUs extends PageManager {
         const formSelector = 'form[data-contact-form]';
         const contactUsValidator = nod({
             submit: `${formSelector} input[type="submit"]`,
-            tap: announceInputErrorMessage,
         });
         const $contactForm = $(formSelector);
 
