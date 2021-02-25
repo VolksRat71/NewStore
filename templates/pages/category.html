@@ -15,6 +15,8 @@ limit: {{theme_settings.categorypage_products_per_page}}
 {{/if}}
 {{/partial}}
 
+<div>Hello category</div>
+
 {{#partial "page"}}
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
@@ -31,7 +33,6 @@ class="category-header-image"
 {{{region name="category_below_header"}}}
 {{/unless}}
 {{{category.description}}}
-<div>Hello category</div>
 <div class="page">
     {{#if category.faceted_search_enabled}}
     <aside class="page-sidebar" id="faceted-search-container">
