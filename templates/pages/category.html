@@ -33,15 +33,22 @@ limit: {{theme_settings.categorypage_products_per_page}}
 <div style="
   display: flex;
   justify-content: center;
+  margin-bottom: 1.5rem
 ">
     <span class="product-status-message" id="addItem" style="color: #ffffff">No Selection</span>
 </div>
 
 <script>
     document.querySelector('#addToCart').addEventListener('click', function () {
+        // find all items and distribute them into a comprehensive array
         const allProductsNodeList = document.querySelectorAll('[data-product-id]')
         const allProductsArray = [...allProductsNodeList].map(item => parseInt(item.dataset.productId))
         const addItemEl = document.querySelector('#addItem')
+
+        allProductsArray.forEach((item, i) => {
+            fetch(`/cart.php?action=add&product_id=${item}`);
+        })
+
         if (addItemEl.textContent === 'No Selection') {
             addItemEl.style.color = '#313440'
             addItemEl.textContent = 'Items have been added to your cart'
