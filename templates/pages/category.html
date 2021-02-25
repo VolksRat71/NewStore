@@ -17,7 +17,72 @@ limit: {{theme_settings.categorypage_products_per_page}}
 
 
 {{#partial "page"}}
-<div>Hello category</div>
+
+<p style="
+  color: #313440;
+  font-family: arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+">
+    <a data-event-type="product-click" data-button-type="add-cart" class="button button--small card-figcaption-button"
+        id="addToCart">Add All To Cart</a>
+    <a data-event-type="product-click" data-button-type="add-cart" class="button button--small card-figcaption-button"
+        id="removeFromCart">Remove All Items</a>
+</p>
+<div style="
+  display: flex;
+  justify-content: center;
+">
+    <span class="product-status-message" id="addItem" style="color: #ffffff">No Selection</span>
+</div>
+
+<script>
+    document.querySelector('#addToCart').addEventListener('click', function () {
+        const allProductsNodeList = document.querySelectorAll('[data-product-id]')
+        const allProductsArray = [...allProductsNodeList].map(item => parseInt(item.dataset.productId))
+        const addItemEl = document.querySelector('#addItem')
+        if (addItemEl.textContent === 'No Selection') {
+            addItemEl.style.color = '#313440'
+            addItemEl.textContent = 'Items have been added to your cart'
+            setTimeout(() => {
+                addItemEl.style.color = '#ffffff'
+                addItemEl.textContent = 'No Selection'
+            }, 1000)
+        } else {
+            setTimeout(() => {
+                addItemEl.style.color = '#313440'
+                addItemEl.textContent = 'Items have been added to your cart'
+            }, 1000)
+            setTimeout(() => {
+                addItemEl.style.color = '#ffffff'
+                addItemEl.textContent = 'No Selection'
+            }, 2000)
+        }
+    })
+    document.querySelector('#removeFromCart').addEventListener('click', function () {
+        const allProductsNodeList = document.querySelectorAll('[data-product-id]')
+        const allProductsArray = [...allProductsNodeList].map(item => parseInt(item.dataset.productId))
+        const addItemEl = document.querySelector('#addItem')
+        if (addItemEl.textContent === 'No Selection') {
+            addItemEl.style.color = '#313440'
+            addItemEl.textContent = 'Items have been removed to your cart'
+            setTimeout(() => {
+                addItemEl.style.color = '#ffffff'
+                addItemEl.textContent = 'No Selection'
+            }, 1000)
+        } else {
+            setTimeout(() => {
+                addItemEl.style.color = '#313440'
+                addItemEl.textContent = 'Items have been removed to your cart'
+            }, 1000)
+            setTimeout(() => {
+                addItemEl.style.color = '#ffffff'
+                addItemEl.textContent = 'No Selection'
+            }, 2000)
+        }
+    })
+</script>
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 {{#if category.image}}
