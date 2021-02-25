@@ -1,7 +1,7 @@
 # use official node parent image
 FROM node:10
 # set container working directory
-WORKDIR /theme
+WORKDIR /newstore
 COPY config.json config.json
 # install the cli
 RUN npm -g config set user root
