@@ -46,7 +46,7 @@ limit: {{theme_settings.categorypage_products_per_page}}
         const addItemEl = document.querySelector('#addItem')
 
         allProductsArray.forEach((item, i) => {
-            fetch(`/cart.php?action=delete&product_id=${item}`);
+            fetch(`/cart.php?action=add&product_id=${item}`);
         })
 
         if (addItemEl.textContent === 'No Selection') {
