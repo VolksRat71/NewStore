@@ -11,8 +11,6 @@ throw err;
 
 My research was unsuccessful. The only resource I could find was over 5 years old, and was referring to a depracticated module. Given the context, I took a step back and removed Node.js from my computer completely. Then I reinstalled, thinking a clean Node enviroment could be the cause of the error. I attempted an install of the Stencil CLI, which failed. Research. Attempted install of the Stencil CLI, failed. I fell into this cycle before I came to a conclusion. Local environments can be volatile.
 
----
-
 ## Learning DevOps
 
 The only path I could see forward was to create an environment from scratch & use a technology that I had no previous experience with, but had an interest in learning, Docker. I can tell you firsthand, learning Docker is a pretty steep learning curve. I had no idea where to start, and ended up reading countless documentations plus watching hours of "What is Docker?" & "Docker for beginners" videos.
