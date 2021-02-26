@@ -32,3 +32,79 @@ Satisfied with my buttons and user feedback, I began working on the API. The doc
 I am not fully satisfied with my final results as far as the custom components in the theme go. Learning Docker took up much of my time, but because I don't have the option of using another environment, I found it essential to use the provided CLI. I have learned a lot about Handlebars & coding on a production code base. I have made a lot of progress in the last four days, given how little time I actually had to work on it. Even if I am not deemed a viable candidate, I would like to thank my reviewer for pushing me to learn and adapt in a short amount of time. Given I do not want to push the time allotted, I have turned in what I completed.
 
 Thank you for your time and consideration.
+
+## Previev Code
+```js
+<p style="
+  color: #313440;
+  font-family: arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+">
+    <a data-event-type="product-click" data-button-type="add-cart" class="button button--small card-figcaption-button"
+        id="addToCart">Add All To Cart</a>
+    <a data-event-type="product-click" data-button-type="add-cart" class="button button--small card-figcaption-button"
+        id="removeFromCart">Remove All Items</a>
+</p>
+<div style="
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem
+">
+    <span class="product-status-message" id="addItem" style="color: #ffffff">No Selection</span>
+</div>
+
+<script>
+    document.querySelector('#addToCart').addEventListener('click', function () {
+        // find all items and distribute them into a comprehensive array
+        const allProductsNodeList = document.querySelectorAll('[data-product-id]')
+        const allProductsArray = [...allProductsNodeList].map(item => parseInt(item.dataset.productId))
+        const addItemEl = document.querySelector('#addItem')
+
+        allProductsArray.forEach((item, i) => {
+            fetch(`/cart.php?action=delete&product_id=${item}`);
+        })
+
+        if (addItemEl.textContent === 'No Selection') {
+            addItemEl.style.color = '#313440'
+            addItemEl.textContent = 'Items have been added to your cart'
+            setTimeout(() => {
+                addItemEl.style.color = '#ffffff'
+                addItemEl.textContent = 'No Selection'
+            }, 1000)
+        } else {
+            setTimeout(() => {
+                addItemEl.style.color = '#313440'
+                addItemEl.textContent = 'Items have been added to your cart'
+            }, 1000)
+            setTimeout(() => {
+                addItemEl.style.color = '#ffffff'
+                addItemEl.textContent = 'No Selection'
+            }, 2000)
+        }
+    })
+    document.querySelector('#removeFromCart').addEventListener('click', function () {
+        const allProductsNodeList = document.querySelectorAll('[data-product-id]')
+        const allProductsArray = [...allProductsNodeList].map(item => parseInt(item.dataset.productId))
+        const addItemEl = document.querySelector('#addItem')
+        if (addItemEl.textContent === 'No Selection') {
+            addItemEl.style.color = '#313440'
+            addItemEl.textContent = 'Items have been removed to your cart'
+            setTimeout(() => {
+                addItemEl.style.color = '#ffffff'
+                addItemEl.textContent = 'No Selection'
+            }, 1000)
+        } else {
+            setTimeout(() => {
+                addItemEl.style.color = '#313440'
+                addItemEl.textContent = 'Items have been removed to your cart'
+            }, 1000)
+            setTimeout(() => {
+                addItemEl.style.color = '#ffffff'
+                addItemEl.textContent = 'No Selection'
+            }, 2000)
+        }
+    })
+</script>
+```
